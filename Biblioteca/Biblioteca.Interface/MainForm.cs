@@ -843,63 +843,21 @@ namespace Biblioteca.Interface
 			}
 		}
 
-		/*Metodi per lo spostamento degli oggetti*/
+		/*Metodo variadico per lo spostamento degli oggetti*/
 
-		private void SpostaOggetti(Control oggetto, int posizione)
-		{
-			oggetto.Location = new Point(oggetto.Location.X, oggetto.Location.Y + posizione);
-		}
-
-		private void SpostaOggetti(Control oggetto1, Control oggetto2, int posizione)
-		{
-			oggetto1.Location = new Point(oggetto1.Location.X, oggetto1.Location.Y + posizione);
-			oggetto2.Location = new Point(oggetto2.Location.X, oggetto2.Location.Y + posizione);
-		}
-
-		private void SpostaOggetti(Control oggetto1, Control oggetto2, Control oggetto3, Control oggetto4, int posizione)
-		{
-			oggetto1.Location = new Point(oggetto1.Location.X, oggetto1.Location.Y + posizione);
-			oggetto2.Location = new Point(oggetto2.Location.X, oggetto2.Location.Y + posizione);
-			oggetto3.Location = new Point(oggetto3.Location.X, oggetto3.Location.Y + posizione);
-			oggetto4.Location = new Point(oggetto4.Location.X, oggetto4.Location.Y + posizione);
-		}
-
-		private void SpostaOggetti(Control oggetto1, Control oggetto2, Control oggetto3, Control oggetto4, Control oggetto5, Control oggetto6, int posizione)
-		{
-			oggetto1.Location = new Point(oggetto1.Location.X, oggetto1.Location.Y + posizione);
-			oggetto2.Location = new Point(oggetto2.Location.X, oggetto2.Location.Y + posizione);
-			oggetto3.Location = new Point(oggetto3.Location.X, oggetto3.Location.Y + posizione);
-			oggetto4.Location = new Point(oggetto4.Location.X, oggetto4.Location.Y + posizione);
-			oggetto5.Location = new Point(oggetto5.Location.X, oggetto5.Location.Y + posizione);
-			oggetto6.Location = new Point(oggetto6.Location.X, oggetto6.Location.Y + posizione);
-		}
-
-		private void SpostaOggetti(Control oggetto1, Control oggetto2, Control oggetto3, Control oggetto4, Control oggetto5, Control oggetto6, Control oggetto7, Control oggetto8, int posizione)
-		{
-			oggetto1.Location = new Point(oggetto1.Location.X, oggetto1.Location.Y + posizione);
-			oggetto2.Location = new Point(oggetto2.Location.X, oggetto2.Location.Y + posizione);
-			oggetto3.Location = new Point(oggetto3.Location.X, oggetto3.Location.Y + posizione);
-			oggetto4.Location = new Point(oggetto4.Location.X, oggetto4.Location.Y + posizione);
-			oggetto5.Location = new Point(oggetto5.Location.X, oggetto5.Location.Y + posizione);
-			oggetto6.Location = new Point(oggetto6.Location.X, oggetto6.Location.Y + posizione);
-			oggetto7.Location = new Point(oggetto7.Location.X, oggetto7.Location.Y + posizione);
-			oggetto8.Location = new Point(oggetto8.Location.X, oggetto8.Location.Y + posizione);
-		}
-
-		private void SpostaOggetti(Control oggetto1, Control oggetto2, Control oggetto3, Control oggetto4, Control oggetto5, Control oggetto6, Control oggetto7, Control oggetto8, Control oggetto9, int posizione)
-		{
-			oggetto1.Location = new Point(oggetto1.Location.X, oggetto1.Location.Y + posizione);
-			oggetto2.Location = new Point(oggetto2.Location.X, oggetto2.Location.Y + posizione);
-			oggetto3.Location = new Point(oggetto3.Location.X, oggetto3.Location.Y + posizione);
-			oggetto4.Location = new Point(oggetto4.Location.X, oggetto4.Location.Y + posizione);
-			oggetto5.Location = new Point(oggetto5.Location.X, oggetto5.Location.Y + posizione);
-			oggetto6.Location = new Point(oggetto6.Location.X, oggetto6.Location.Y + posizione);
-			oggetto7.Location = new Point(oggetto7.Location.X, oggetto7.Location.Y + posizione);
-			oggetto8.Location = new Point(oggetto8.Location.X, oggetto8.Location.Y + posizione);
-			oggetto9.Location = new Point(oggetto9.Location.X, oggetto9.Location.Y + posizione);
-		}
+		private void SpostaOggetti(int posizione, params Control[] oggetti)
+        {
+			foreach (Control oggetto in oggetti)
+				oggetto.Location = new Point(oggetto.Location.X, oggetto.Location.Y + posizione);
+        }
 
 		/*Metodi per cambiare la visibilità degli oggetti*/
+
+		private void CambiaVisibilità(bool[] visibilità, params Control[] oggetti)
+        {
+			for (int i = 0; i < visibilità.Count(); i++)
+				oggetti[i].Visible = visibilità[i];
+        }
 
 		private void CambiaVisibilità(Control oggetto1, bool visibilità1, Control oggetto2, bool visibilità2)
 		{
@@ -1144,36 +1102,36 @@ namespace Biblioteca.Interface
 					switch (elemento)
 					{
 						case "libri": //Aggiorna la visibilità dei Libri
-							CambiaVisibilità(lblTitolo, true, txtTitolo, true, lblLingua, true, txtLingua, true, lblEditore, true, txtEditore, true, lblData, true, dtpPubblicazione, true);
+							CambiaVisibilità( new bool[]{ true, true, true, true, true, true, true, true}, lblTitolo, txtTitolo, lblLingua, txtLingua, lblEditore, txtEditore, lblData, dtpPubblicazione);
 							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, true, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
 							break;
 						case "categorie": //Aggiorna la visibilità delle Categorie
-							SpostaOggetti(lblCategoria, txtCategoria, -50);
+							SpostaOggetti(-50, lblCategoria, txtCategoria);
 							CambiaVisibilità(lblIdCategoria, false, nudIdCategorie, false, lblCategoria, true, txtCategoria, true);
 							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, true, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
 							break;
 						case "collocazioni": //Aggiorna la visibilità delle Collocazioni
-							SpostaOggetti(lblSezione, txtSezione, lblNumeroPosto, nudNumeroPosto, lblNumeroScaffale, nudNumeroScaffale, lblQuantita, nudQuantita, -50);
+							SpostaOggetti(-50, lblSezione, txtSezione, lblNumeroPosto, nudNumeroPosto, lblNumeroScaffale, nudNumeroScaffale, lblQuantita, nudQuantita);
 							CambiaVisibilità(lblIdCollocazioni, false, nudIdCollocazioni, false, lblSezione, true, txtSezione, true, lblNumeroPosto, true, nudNumeroPosto, true, lblNumeroScaffale, true, nudNumeroScaffale, true, lblQuantita, true, nudQuantita, true);
 							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, true, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
 							if (!controlloSeEsisteLibriCollocazioni)
 							{
-								SpostaOggetti(lblCollocazioniCodiceISBNLibri, nudCollocazioniCodiceISBNLibri, -50);
+								SpostaOggetti(-50, lblCollocazioniCodiceISBNLibri, nudCollocazioniCodiceISBNLibri);
 								CambiaVisibilità(lblCollocazioniCodiceISBNLibri, true, nudCollocazioniCodiceISBNLibri, true);
 							}
 							break;
 						case "autori": //Aggiorna la visibilità degli Autori
-							SpostaOggetti(lblNomeAutore, txtNomeAutore, lblCognomeAutore, txtCognomeAutore, lblDataNascita, dtpDataNascitaAutore, lblLuogoNascita, txtLuogoNascita, -50);
+							SpostaOggetti(-50, lblNomeAutore, txtNomeAutore, lblCognomeAutore, txtCognomeAutore, lblDataNascita, dtpDataNascitaAutore, lblLuogoNascita, txtLuogoNascita);
 							CambiaVisibilità(lblIdAutore, false, nudIdAutore, false, lblNomeAutore, true, txtNomeAutore, true, lblCognomeAutore, true, txtCognomeAutore, true, lblLuogoNascita, true, txtLuogoNascita, true, lblDataNascita, true, dtpDataNascitaAutore, true);
 							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, true, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
 							break;
 						case "utenti": //Aggiorna la visibilità degli Utenti
-							SpostaOggetti(lblNomeUtente, txtNomeUtente, lblCognomeUtente, txtCognomeUtente, lblDataRegistrazione, dtpDataRegistrazione, -50);
+							SpostaOggetti(-50, lblNomeUtente, txtNomeUtente, lblCognomeUtente, txtCognomeUtente, lblDataRegistrazione, dtpDataRegistrazione);
 							CambiaVisibilità(lblIdTessera, false, nudIdTessera, false, lblNomeUtente, true, txtNomeUtente, true, lblCognomeUtente, true, txtCognomeUtente, true, lblDataRegistrazione, true, dtpDataRegistrazione, true);
 							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, true, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
 							break;
 						case "prestiti"://Aggiorna la visibilità dei Prestiti
-							SpostaOggetti(ckbData, lblCodiceISBNPrestiti, nudCodiceISBNPrestiti, lblIdTesseraPrestiti, nudIdTesseraPrestito, lblInizioPrestito, dtpInizioPrestito, lblFinePrestito, dtpFinePrestito, -50);
+							SpostaOggetti(-50, ckbData, lblCodiceISBNPrestiti, nudCodiceISBNPrestiti, lblIdTesseraPrestiti, nudIdTesseraPrestito, lblInizioPrestito, dtpInizioPrestito, lblFinePrestito, dtpFinePrestito);
 							CambiaVisibilità(ckbData, true, lblIdPrestiti, false, nudIdPrestiti, false, lblCodiceISBNPrestiti, true, nudCodiceISBNPrestiti, true, lblIdTesseraPrestiti, true, nudIdTesseraPrestito, true, lblInizioPrestito, true, dtpInizioPrestito, true, lblFinePrestito, false, dtpFinePrestito, false);
 							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, true, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
 							break;
@@ -1363,7 +1321,7 @@ namespace Biblioteca.Interface
 						case 3: //Ricerca Libro più noleggiato per ogni categoria
 						case 5: //Ricerca Autore preferito per ogni utente
 							pnlRicerca.Visible = true;
-							SpostaOggetti(dgvRicerca, -30);
+							SpostaOggetti(-30, dgvRicerca);
 							CambiaVisibilità(lblCognomeAutoreRicerca, false, txtCognomeAutoreRicerca, false, lblNomeCategoriaRicerca, false, txtNomeCategoriaRicerca, false, lblIdTesseraRicerca, false, nudIdTesseraRicerca, false, lblCodiceISBNRicerca, false, nudCodiceISBNRicerca, false, lblNomeAutoreRicerca, false, txtNomeAutoreRicerca, false);
 							break;
 						case 4: //Ricerca Autori che hanno scritto libri di una categoria
@@ -1374,14 +1332,14 @@ namespace Biblioteca.Interface
 						case 6: //Ricerca Libri di una categoria restituiti da un utente
 							Size = new Size(780, 450);
 							pnlRicerca.Visible = true;
-							SpostaOggetti(dgvRicerca, +40);
+							SpostaOggetti(+40, dgvRicerca);
 							CambiaVisibilità(lblCognomeAutoreRicerca, false, txtCognomeAutoreRicerca, false, lblNomeCategoriaRicerca, true, txtNomeCategoriaRicerca, true, lblIdTesseraRicerca, true, nudIdTesseraRicerca, true, lblCodiceISBNRicerca, false, nudCodiceISBNRicerca, false, lblNomeAutoreRicerca, false, txtNomeAutoreRicerca, false);
 							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
 							break;
 						case 7: //Ricerca Libri scritti da un autore
 							Size = new Size(780, 450);
 							pnlRicerca.Visible = true;
-							SpostaOggetti(dgvRicerca, +40);
+							SpostaOggetti(+40, dgvRicerca);
 							CambiaVisibilità(lblCognomeAutoreRicerca, true, txtCognomeAutoreRicerca, true, lblNomeCategoriaRicerca, false, txtNomeCategoriaRicerca, false, lblIdTesseraRicerca, false, nudIdTesseraRicerca, false, lblCodiceISBNRicerca, false, nudCodiceISBNRicerca, false, lblNomeAutoreRicerca, true, txtNomeAutoreRicerca, true);
 							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
 							break;
