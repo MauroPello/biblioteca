@@ -1,5 +1,6 @@
 # biblioteca
 C# WindowsForms Application for Library Management (SQL database)
+
 Al codice non sono state apportate modifiche in quanto è stato sviluppato in modo tale che potesse supportare le due principali varianti del database (relazione 1 a N o N a N per Libri e Collocazioni) e la differente formattazione dei nomi.
 
 Per aggiungere un database al programma, copiare il proprio database (.mdf) nella cartella "Databases". Successivamente aggiungere il nome del database aggiunto nel file "NomiDatabase.txt", creare un nuovo file .txt nella cartella "\Config\Queries" con nome uguale a quello del database che si sta inserendo, infine aggiungere le query necessarie al file appena creato. Il programma adotta il seguente ordine/indice per le query:
