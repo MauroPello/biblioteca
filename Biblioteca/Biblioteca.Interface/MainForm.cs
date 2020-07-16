@@ -851,81 +851,13 @@ namespace Biblioteca.Interface
 				oggetto.Location = new Point(oggetto.Location.X, oggetto.Location.Y + posizione);
         }
 
-		/*Metodi per cambiare la visibilità degli oggetti*/
+		/*Metodo variadico per cambiare la visibilità degli oggetti*/
 
 		private void CambiaVisibilità(bool[] visibilità, params Control[] oggetti)
         {
 			for (int i = 0; i < visibilità.Count(); i++)
 				oggetti[i].Visible = visibilità[i];
         }
-
-		private void CambiaVisibilità(Control oggetto1, bool visibilità1, Control oggetto2, bool visibilità2)
-		{
-			oggetto1.Visible = visibilità1;
-			oggetto2.Visible = visibilità2;
-		}
-
-		private void CambiaVisibilità (Control oggetto1, bool visibilità1, Control oggetto2, bool visibilità2, Control oggetto3, bool visibilità3, Control oggetto4, bool visibilità4)
-		{
-			oggetto1.Visible = visibilità1;
-			oggetto2.Visible = visibilità2;
-			oggetto3.Visible = visibilità3;
-			oggetto4.Visible = visibilità4;
-		}
-
-		private void CambiaVisibilità (Control oggetto1, bool visibilità1, Control oggetto2, bool visibilità2, Control oggetto3, bool visibilità3, Control oggetto4, bool visibilità4, Control oggetto5, bool visibilità5, Control oggetto6, bool visibilità6, Control oggetto7, bool visibilità7, Control oggetto8, bool visibilità8, Control oggetto9, bool visibilità9)
-		{
-			oggetto1.Visible = visibilità1;
-			oggetto2.Visible = visibilità2;
-			oggetto3.Visible = visibilità3;
-			oggetto4.Visible = visibilità4;
-			oggetto5.Visible = visibilità5;
-			oggetto6.Visible = visibilità6;
-			oggetto7.Visible = visibilità7;
-			oggetto8.Visible = visibilità8;
-			oggetto9.Visible = visibilità9;
-		}
-
-		private void CambiaVisibilità(Control oggetto1, bool visibilità1, Control oggetto2, bool visibilità2, Control oggetto3, bool visibilità3, Control oggetto4, bool visibilità4, Control oggetto5, bool visibilità5, Control oggetto6, bool visibilità6, Control oggetto7, bool visibilità7, Control oggetto8, bool visibilità8)
-		{
-			oggetto1.Visible = visibilità1;
-			oggetto2.Visible = visibilità2;
-			oggetto3.Visible = visibilità3;
-			oggetto4.Visible = visibilità4;
-			oggetto5.Visible = visibilità5;
-			oggetto6.Visible = visibilità6;
-			oggetto7.Visible = visibilità7;
-			oggetto8.Visible = visibilità8;
-		}
-
-		private void CambiaVisibilità(Control oggetto1, bool visibilità1, Control oggetto2, bool visibilità2, Control oggetto3, bool visibilità3, Control oggetto4, bool visibilità4, Control oggetto5, bool visibilità5, Control oggetto6, bool visibilità6, Control oggetto7, bool visibilità7, Control oggetto8, bool visibilità8, Control oggetto9, bool visibilità9, Control oggetto10, bool visibilità10)
-		{
-			oggetto1.Visible = visibilità1;
-			oggetto2.Visible = visibilità2;
-			oggetto3.Visible = visibilità3;
-			oggetto4.Visible = visibilità4;
-			oggetto5.Visible = visibilità5;
-			oggetto6.Visible = visibilità6;
-			oggetto7.Visible = visibilità7;
-			oggetto8.Visible = visibilità8;
-			oggetto9.Visible = visibilità9;
-			oggetto10.Visible = visibilità10;
-		}
-
-		private void CambiaVisibilità(Control oggetto1, bool visibilità1, Control oggetto2, bool visibilità2, Control oggetto3, bool visibilità3, Control oggetto4, bool visibilità4, Control oggetto5, bool visibilità5, Control oggetto6, bool visibilità6, Control oggetto7, bool visibilità7, Control oggetto8, bool visibilità8, Control oggetto9, bool visibilità9, Control oggetto10, bool visibilità10, Control oggetto11, bool visibilità11)
-		{
-			oggetto1.Visible = visibilità1;
-			oggetto2.Visible = visibilità2;
-			oggetto3.Visible = visibilità3;
-			oggetto4.Visible = visibilità4;
-			oggetto5.Visible = visibilità5;
-			oggetto6.Visible = visibilità6;
-			oggetto7.Visible = visibilità7;
-			oggetto8.Visible = visibilità8;
-			oggetto9.Visible = visibilità9;
-			oggetto10.Visible = visibilità10;
-			oggetto11.Visible = visibilità11;
-		}
 
 		//Imposta la posizione de default degli oggetti
 		private void ImpostaVistaDefault ()
@@ -1103,46 +1035,46 @@ namespace Biblioteca.Interface
 					{
 						case "libri": //Aggiorna la visibilità dei Libri
 							CambiaVisibilità( new bool[]{ true, true, true, true, true, true, true, true}, lblTitolo, txtTitolo, lblLingua, txtLingua, lblEditore, txtEditore, lblData, dtpPubblicazione);
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, true, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, true, false, false, false, false, false, false, false,  false}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione)
 							break;
 						case "categorie": //Aggiorna la visibilità delle Categorie
 							SpostaOggetti(-50, lblCategoria, txtCategoria);
-							CambiaVisibilità(lblIdCategoria, false, nudIdCategorie, false, lblCategoria, true, txtCategoria, true);
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, true, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, true, true}, lblIdCategoria, nudIdCategorie, lblCategoria, txtCategoria);
+							CambiaVisibilità( new bool[]{ false, false, false, true, false, false, false, false, false, false,  false}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione)
 							break;
 						case "collocazioni": //Aggiorna la visibilità delle Collocazioni
 							SpostaOggetti(-50, lblSezione, txtSezione, lblNumeroPosto, nudNumeroPosto, lblNumeroScaffale, nudNumeroScaffale, lblQuantita, nudQuantita);
-							CambiaVisibilità(lblIdCollocazioni, false, nudIdCollocazioni, false, lblSezione, true, txtSezione, true, lblNumeroPosto, true, nudNumeroPosto, true, lblNumeroScaffale, true, nudNumeroScaffale, true, lblQuantita, true, nudQuantita, true);
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, true, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, true, true, true, true, true, true}, lblIdCollocazioni, nudIdCollocazioni, lblSezione, txtSezione, lblNumeroPosto, nudNumeroPosto, lblNumeroScaffale, nudNumeroScaffale, lblQuantita, nudQuantita);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, true, false, false, false,  false}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione)
 							if (!controlloSeEsisteLibriCollocazioni)
 							{
 								SpostaOggetti(-50, lblCollocazioniCodiceISBNLibri, nudCollocazioniCodiceISBNLibri);
-								CambiaVisibilità(lblCollocazioniCodiceISBNLibri, true, nudCollocazioniCodiceISBNLibri, true);
+								CambiaVisibilità(new bool[]{true, true}, lblCollocazioniCodiceISBNLibri, nudCollocazioniCodiceISBNLibri)
 							}
 							break;
 						case "autori": //Aggiorna la visibilità degli Autori
 							SpostaOggetti(-50, lblNomeAutore, txtNomeAutore, lblCognomeAutore, txtCognomeAutore, lblDataNascita, dtpDataNascitaAutore, lblLuogoNascita, txtLuogoNascita);
-							CambiaVisibilità(lblIdAutore, false, nudIdAutore, false, lblNomeAutore, true, txtNomeAutore, true, lblCognomeAutore, true, txtCognomeAutore, true, lblLuogoNascita, true, txtLuogoNascita, true, lblDataNascita, true, dtpDataNascitaAutore, true);
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, true, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, true, true, true, true, true, true, true, true}, lblIdAutore, nudIdAutore, lblNomeAutore, txtNomeAutore, lblCognomeAutore, txtCognomeAutore, lblLuogoNascita, txtLuogoNascita, lblDataNascita, dtpDataNascitaAutore);
+							CambiaVisibilità( new bool[]{ false, false, false, false, true, false, false, false, false, false, false}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "utenti": //Aggiorna la visibilità degli Utenti
 							SpostaOggetti(-50, lblNomeUtente, txtNomeUtente, lblCognomeUtente, txtCognomeUtente, lblDataRegistrazione, dtpDataRegistrazione);
-							CambiaVisibilità(lblIdTessera, false, nudIdTessera, false, lblNomeUtente, true, txtNomeUtente, true, lblCognomeUtente, true, txtCognomeUtente, true, lblDataRegistrazione, true, dtpDataRegistrazione, true);
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, true, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, true, true, true, true, true}, lblIdTessera, nudIdTessera, lblNomeUtente, txtNomeUtente, lblCognomeUtente, txtCognomeUtente, lblDataRegistrazione, dtpDataRegistrazione);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, true, false, false, false, false}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "prestiti"://Aggiorna la visibilità dei Prestiti
 							SpostaOggetti(-50, ckbData, lblCodiceISBNPrestiti, nudCodiceISBNPrestiti, lblIdTesseraPrestiti, nudIdTesseraPrestito, lblInizioPrestito, dtpInizioPrestito, lblFinePrestito, dtpFinePrestito);
-							CambiaVisibilità(ckbData, true, lblIdPrestiti, false, nudIdPrestiti, false, lblCodiceISBNPrestiti, true, nudCodiceISBNPrestiti, true, lblIdTesseraPrestiti, true, nudIdTesseraPrestito, true, lblInizioPrestito, true, dtpInizioPrestito, true, lblFinePrestito, false, dtpFinePrestito, false);
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, true, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, false, false, true, true, true, true, true, true, false}, ckbData, lblIdPrestiti, nudIdPrestiti, lblCodiceISBNPrestiti, nudCodiceISBNPrestiti, lblIdTesseraPrestiti, nudIdTesseraPrestito, lblInizioPrestito, dtpInizioPrestito, lblFinePrestito, dtpFinePrestito);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, true, false, false}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libriautori": //Aggiorna la visibilità dei libri-autore
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, true, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, true, false}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libricategorie": //Aggiorna la visibilità dei libri-categorie
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, true, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false, true}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libricollocazioni": //Aggiorna la visibilità dei libri-collocazioni
-							CambiaVisibilità(pnlRicerca, false, dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, true);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false, false}, pnlRicerca, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						default:
 							break;
@@ -1166,43 +1098,43 @@ namespace Biblioteca.Interface
 					switch (elemento)
 					{
 						case "libri": //Libri
-							CambiaVisibilità(lblTitolo, true, txtTitolo, true, lblLingua, true, txtLingua, true, lblEditore, true, txtEditore, true, lblData, true, dtpPubblicazione, true);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, true, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, true, true, true, true, true}, lblTitolo, txtTitolo, lblLingua, txtLingua, lblEditore, txtEditore, lblData, dtpPubblicazione);
+							CambiaVisibilità( new bool[]{ false, true, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "categorie": //Categorie
-							CambiaVisibilità(lblIdCategoria, true, nudIdCategorie, true, lblCategoria, true, txtCategoria, true);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, true, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, true}, lblIdCategoria, nudIdCategorie, lblCategoria, txtCategoria);
+							CambiaVisibilità( new bool[]{ false, false, true, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "collocazioni": //Collocazioni
-							CambiaVisibilità(lblIdCollocazioni, true, nudIdCollocazioni, true, lblSezione, true, txtSezione, true, lblNumeroPosto, true, nudNumeroPosto, true, lblNumeroScaffale, true, nudNumeroScaffale, true, lblQuantita, true, nudQuantita, true);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, true, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, true, true, true, true, true, true, true}, lblIdCollocazioni, nudIdCollocazioni, lblSezione, txtSezione, lblNumeroPosto, nudNumeroPosto, lblNumeroScaffale, nudNumeroScaffale, lblQuantita, nudQuantita);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, true, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							if (!controlloSeEsisteLibriCollocazioni)
 							{
 									Size = new Size(600, 350);
-									CambiaVisibilità(lblCollocazioniCodiceISBNLibri, true, nudCollocazioniCodiceISBNLibri, true);
+							CambiaVisibilità( new bool[]{ true}, lblCollocazioniCodiceISBNLibri, nudCollocazioniCodiceISBNLibri);
 							}
 							break;
 						case "autori": //Autori
-							CambiaVisibilità(lblIdAutore, true, nudIdAutore, true, lblNomeAutore, true, txtNomeAutore, true, lblCognomeAutore, true, txtCognomeAutore, true, lblLuogoNascita, true, txtLuogoNascita, true, lblDataNascita, true, dtpDataNascitaAutore, true);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, true, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, true, true, true, true, true, true, true}, lblIdAutore, nudIdAutore, lblNomeAutore, txtNomeAutore, lblCognomeAutore, txtCognomeAutore, lblLuogoNascita, txtLuogoNascita, lblDataNascita, dtpDataNascitaAutore);
+							CambiaVisibilità( new bool[]{ false, false, false, true, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "utenti": //Utenti
-							CambiaVisibilità(lblIdTessera, true, nudIdTessera, true, lblNomeUtente, true, txtNomeUtente, true, lblCognomeUtente, true, txtCognomeUtente, true, lblDataRegistrazione, true, dtpDataRegistrazione, true);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, true, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, true, true, true, true, true}, lblIdTessera, nudIdTessera, lblNomeUtente, txtNomeUtente, lblCognomeUtente, txtCognomeUtente, lblDataRegistrazione, dtpDataRegistrazione);
+							CambiaVisibilità( new bool[]{ false, false, false, false, true, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "prestiti": //Prestiti
 							Size = new Size(600, 350);
-							CambiaVisibilità(ckbData, true, lblIdPrestiti, true, nudIdPrestiti, true, lblCodiceISBNPrestiti, true, nudCodiceISBNPrestiti, true, lblIdTesseraPrestiti, true, nudIdTesseraPrestito, true, lblInizioPrestito, true, dtpInizioPrestito, true, lblFinePrestito, false, dtpFinePrestito, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, true, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, true, true, true, true, true, true, true, false}, ckbData, lblIdPrestiti, nudIdPrestiti, lblCodiceISBNPrestiti, nudCodiceISBNPrestiti, lblIdTesseraPrestiti, nudIdTesseraPrestito, lblInizioPrestito, dtpInizioPrestito, lblFinePrestito, dtpFinePrestito);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, true, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libriautori": //Libri-Autori
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, true, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, true, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libricategorie": //Libri-Categorie
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, true, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, true}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libricollocazioni": //Libri-Collocazioni
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, true);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						default:
 							break;
@@ -1217,39 +1149,39 @@ namespace Biblioteca.Interface
 					{
 						case "libri": //Libro
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "categorie": //Categoria
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "collocazioni": //Collocazione
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "autori": //Autore
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "utenti": //Utente
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "prestiti": //Prestito
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libriautori": //Libri-Autori
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libricategorie": //Libri-Categorie
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libricollocazioni": //Libri-Collocazioni
 							SvuotaTutto();
-							CambiaVisibilità(pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false}, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						default:
 							break;
@@ -1260,46 +1192,46 @@ namespace Biblioteca.Interface
 					switch (elemento)
 					{
 						case "libri": //Libro
-							CambiaVisibilità(lblTitolo, false, txtTitolo, false, lblLingua, false, txtLingua, false, lblEditore, false, txtEditore, false, lblData, false, dtpPubblicazione, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, true, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false}, lblTitolo, txtTitolo, lblLingua, txtLingua, lblEditore, txtEditore, lblData, dtpPubblicazione);
+							CambiaVisibilità( new bool[]{ false, true, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "categorie": //Categoria
-							CambiaVisibilità(lblIdCategoria, true, nudIdCategorie, true, lblCategoria, false, txtCategoria, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, true, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, false}, lblIdCategoria, nudIdCategorie, lblCategoria, txtCategoria);
+							CambiaVisibilità( new bool[]{ false, false, true, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "collocazioni": //Collocazione
-							CambiaVisibilità(lblIdCollocazioni, true, nudIdCollocazioni, true, lblSezione, false, txtSezione, false, lblNumeroPosto, false, nudNumeroPosto, false, lblNumeroScaffale, false, nudNumeroScaffale, false, lblQuantita, false, nudQuantita, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, true, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, false, false, false, false, false, false, false}, lblIdCollocazioni, nudIdCollocazioni, lblSezione, txtSezione, lblNumeroPosto, nudNumeroPosto, lblNumeroScaffale, nudNumeroScaffale, lblQuantita, nudQuantita);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, true, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							if (!controlloSeEsisteLibriCollocazioni)
-								CambiaVisibilità(lblCollocazioniCodiceISBNLibri, false, nudCollocazioniCodiceISBNLibri, false);
+							CambiaVisibilità( new bool[]{ false}, lblCollocazioniCodiceISBNLibri, nudCollocazioniCodiceISBNLibri);
 							break;
 						case "autori": //Autore
-							CambiaVisibilità(lblIdAutore, true, nudIdAutore, true, lblNomeAutore, false, txtNomeAutore, false, lblCognomeAutore, false, txtCognomeAutore, false, lblLuogoNascita, false, txtLuogoNascita, false, lblDataNascita, false, dtpDataNascitaAutore, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, true, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, false, false, false, false, false, false, false}, lblIdAutore, nudIdAutore, lblNomeAutore, txtNomeAutore, lblCognomeAutore, txtCognomeAutore, lblLuogoNascita, txtLuogoNascita, lblDataNascita, dtpDataNascitaAutore);
+							CambiaVisibilità( new bool[]{ false, false, false, true, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "utenti": //Utente
-							CambiaVisibilità(lblIdTessera, true, nudIdTessera, true, lblNomeUtente, false, txtNomeUtente, false, lblCognomeUtente, false, txtCognomeUtente, false, lblDataRegistrazione, false, dtpDataRegistrazione, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, true, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, false, false, false, false, false}, lblIdTessera, nudIdTessera, lblNomeUtente, txtNomeUtente, lblCognomeUtente, txtCognomeUtente, lblDataRegistrazione, dtpDataRegistrazione);
+							CambiaVisibilità( new bool[]{ false, false, false, false, true, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "prestiti": //Prestito
-							CambiaVisibilità(ckbData, false, lblIdPrestiti, true, nudIdPrestiti, true, lblCodiceISBNPrestiti, false, nudCodiceISBNPrestiti, false, lblIdTesseraPrestiti, false, nudIdTesseraPrestito, false, lblInizioPrestito, false, dtpInizioPrestito, false, lblFinePrestito, false, dtpFinePrestito, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, true, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, true, true, false, false, false, false, false, false, false}, ckbData, lblIdPrestiti, nudIdPrestiti, lblCodiceISBNPrestiti, nudCodiceISBNPrestiti, lblIdTesseraPrestiti, nudIdTesseraPrestito, lblInizioPrestito, dtpInizioPrestito, lblFinePrestito, dtpFinePrestito);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, true, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libriautori": //Libri-Autori
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, true, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, true, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libricategorie": //Libri-Categorie
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, true, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, true}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case "libricollocazioni": //Libri-Collocazioni
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, true);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						default:
 							break;
 					}
 					break;
 				case "Ricerca": //Ricerca
-					CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 					pnlRicerca.Visible = true;
 					
 					cmbElemento.Visible = false;
@@ -1313,8 +1245,8 @@ namespace Biblioteca.Interface
 					{
 						case 0://Ricerca Collocazioni con Codice ISBN del Libro
 							pnlRicerca.Visible = true;
-							CambiaVisibilità(lblCognomeAutoreRicerca, false, txtCognomeAutoreRicerca, false, lblNomeCategoriaRicerca, false, txtNomeCategoriaRicerca, false, lblIdTesseraRicerca, false, nudIdTesseraRicerca, false, lblCodiceISBNRicerca, true, nudCodiceISBNRicerca, true, lblNomeAutoreRicerca, false, txtNomeAutoreRicerca, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, true, true, false}, lblCognomeAutoreRicerca, txtCognomeAutoreRicerca, lblNomeCategoriaRicerca, txtNomeCategoriaRicerca, lblIdTesseraRicerca, nudIdTesseraRicerca, lblCodiceISBNRicerca, nudCodiceISBNRicerca, lblNomeAutoreRicerca, txtNomeAutoreRicerca);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case 1: //Ricerca Libri non restituti da più di 2 mesi
 						case 2: //Ricerca Libro più noleggiato per ogni utente
@@ -1322,26 +1254,26 @@ namespace Biblioteca.Interface
 						case 5: //Ricerca Autore preferito per ogni utente
 							pnlRicerca.Visible = true;
 							SpostaOggetti(-30, dgvRicerca);
-							CambiaVisibilità(lblCognomeAutoreRicerca, false, txtCognomeAutoreRicerca, false, lblNomeCategoriaRicerca, false, txtNomeCategoriaRicerca, false, lblIdTesseraRicerca, false, nudIdTesseraRicerca, false, lblCodiceISBNRicerca, false, nudCodiceISBNRicerca, false, lblNomeAutoreRicerca, false, txtNomeAutoreRicerca, false);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false}, lblCognomeAutoreRicerca, txtCognomeAutoreRicerca, lblNomeCategoriaRicerca, txtNomeCategoriaRicerca, lblIdTesseraRicerca, nudIdTesseraRicerca, lblCodiceISBNRicerca, nudCodiceISBNRicerca, lblNomeAutoreRicerca, txtNomeAutoreRicerca);
 							break;
 						case 4: //Ricerca Autori che hanno scritto libri di una categoria
 							pnlRicerca.Visible = true;
-							CambiaVisibilità(lblCognomeAutoreRicerca, false, txtCognomeAutoreRicerca, false, lblNomeCategoriaRicerca, true, txtNomeCategoriaRicerca, true, lblIdTesseraRicerca, false, nudIdTesseraRicerca, false, lblCodiceISBNRicerca, false, nudCodiceISBNRicerca, false, lblNomeAutoreRicerca, false, txtNomeAutoreRicerca, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, true, true, false, false, false, false, false}, lblCognomeAutoreRicerca, txtCognomeAutoreRicerca, lblNomeCategoriaRicerca, txtNomeCategoriaRicerca, lblIdTesseraRicerca, nudIdTesseraRicerca, lblCodiceISBNRicerca, nudCodiceISBNRicerca, lblNomeAutoreRicerca, txtNomeAutoreRicerca);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case 6: //Ricerca Libri di una categoria restituiti da un utente
 							Size = new Size(780, 450);
 							pnlRicerca.Visible = true;
 							SpostaOggetti(+40, dgvRicerca);
-							CambiaVisibilità(lblCognomeAutoreRicerca, false, txtCognomeAutoreRicerca, false, lblNomeCategoriaRicerca, true, txtNomeCategoriaRicerca, true, lblIdTesseraRicerca, true, nudIdTesseraRicerca, true, lblCodiceISBNRicerca, false, nudCodiceISBNRicerca, false, lblNomeAutoreRicerca, false, txtNomeAutoreRicerca, false);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ false, false, true, true, true, true, false, false, false}, lblCognomeAutoreRicerca, txtCognomeAutoreRicerca, lblNomeCategoriaRicerca, txtNomeCategoriaRicerca, lblIdTesseraRicerca, nudIdTesseraRicerca, lblCodiceISBNRicerca, nudCodiceISBNRicerca, lblNomeAutoreRicerca, txtNomeAutoreRicerca);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						case 7: //Ricerca Libri scritti da un autore
 							Size = new Size(780, 450);
 							pnlRicerca.Visible = true;
 							SpostaOggetti(+40, dgvRicerca);
-							CambiaVisibilità(lblCognomeAutoreRicerca, true, txtCognomeAutoreRicerca, true, lblNomeCategoriaRicerca, false, txtNomeCategoriaRicerca, false, lblIdTesseraRicerca, false, nudIdTesseraRicerca, false, lblCodiceISBNRicerca, false, nudCodiceISBNRicerca, false, lblNomeAutoreRicerca, true, txtNomeAutoreRicerca, true);
-							CambiaVisibilità(dgvElenco, false, pnlLibri, false, pnlCategorie, false, pnlAutori, false, pnlUtenti, false, pnlCollocazioni, false, pnlPrestiti, false, pnlLibriAutore, false, pnlLibriCategoria, false, pnlLibriCollocazione, false);
+							CambiaVisibilità( new bool[]{ true, true, false, false, false, false, false, false, true}, lblCognomeAutoreRicerca, txtCognomeAutoreRicerca, lblNomeCategoriaRicerca, txtNomeCategoriaRicerca, lblIdTesseraRicerca, nudIdTesseraRicerca, lblCodiceISBNRicerca, nudCodiceISBNRicerca, lblNomeAutoreRicerca, txtNomeAutoreRicerca);
+							CambiaVisibilità( new bool[]{ false, false, false, false, false, false, false, false, false}, dgvElenco, pnlLibri, pnlCategorie, pnlAutori, pnlUtenti, pnlCollocazioni, pnlPrestiti, pnlLibriAutore, pnlLibriCategoria, pnlLibriCollocazione);
 							break;
 						default:
 							break;
